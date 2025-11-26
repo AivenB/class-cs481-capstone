@@ -1,0 +1,20 @@
+# Ignore environment files
+.env*
+
+# ignore the virtual environment
+venv/
+
+# ignore the database that generates from local development
+db.sqlite3
+
+# ignore the cache files that are generated
+__pycache__/
+
+# ignore pdf files
+*.pdf
+
+# ignore node modules
+node_modulues/
+
+# ignore django error logs
+logs/

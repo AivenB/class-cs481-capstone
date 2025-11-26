@@ -1,0 +1,2 @@
+# Force Git to convert .sh files to Unix-style line endings (LF) when checking out
+*.sh text eol=lf

@@ -1,0 +1,41 @@
+{% extends "basis.html" %} 
+
+{% block title %}Assessment | Rural Resilience Dashboard{% endblock %}
+
+{% block content %} 
+
+    <!-- Header -->
+    <div class="mb-6">
+        <h1 class="text-3xl font-bold">Assessment</h1>
+        <p class="text-gray-600 mt-2">Conduct resilience assessments for communities.</p>
+    </div>
+
+    <!-- New Assessment Form -->
+    <div class="bg-white shadow-md rounded-lg p-6">
+        <h2 class="text-2xl font-bold">Start New Assessment</h2>
+        <p class="text-gray-600 text-sm mt-1">
+            Select a community and begin a new resilience assessment
+        </p>
+        <!-- Community Dropdown with dynamic form loading -->
+        <div class="mt-4">
+            <label for="community" class="block text-sm font-bold text-black">Select Community</label>
+            <select id="community" name="community" 
+                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-opacity-50"
+                    hx-get="{% url 'show_start_assessment_button' %}"
+                    hx-trigger="change"
+                    hx-target="#start-assessment-button"
+                    hx-include="[name='community']"
+                    >
+                <option value="" disabled selected>Select a community</option>
+                {% for community in communities %}
+                    <option value="{{ community.id }}">{{ community.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <!-- Placeholder for the dynamic Start Assessment Button -->
+    <div id="start-assessment-button" class="mt-4">
+        <!-- This will be populated by HTMX when a community is selected -->
+
+{% endblock %}

@@ -1,0 +1,26 @@
+<div id="profiles-section">
+    <!-- Tabs -->
+    <div class="inline-flex rounded-lg border bg-white shadow-sm p-0.5 mb-5">
+      <button 
+          class="px-6 py-2 text-sm font-medium {% if active_tab == 'all' %}text-white bg-black{% else %}text-gray-700 bg-gray-200 hover:bg-gray-300{% endif %} rounded-l-lg"
+          hx-get="{% url 'profiles_filter' 'all' %}"
+          hx-target="#profiles-section"
+          hx-swap="outerHTML"
+          hx-push-url="true">All Communities</button>
+      <button 
+          class="px-6 py-2 text-sm font-medium {% if active_tab == 'assessed' %}text-white bg-black{% else %}text-gray-700 bg-gray-200 hover:bg-gray-300{% endif %}"
+          hx-get="{% url 'profiles_filter' 'assessed' %}"
+          hx-target="#profiles-section"
+          hx-swap="outerHTML"
+          hx-push-url="true">Assessed</button>
+      <button 
+          class="px-6 py-2 text-sm font-medium {% if active_tab == 'in_progress' %}text-white bg-black{% else %}text-gray-700 bg-gray-200 hover:bg-gray-300{% endif %} rounded-r-lg"
+          hx-get="{% url 'profiles_filter' 'in_progress' %}"
+          hx-target="#profiles-section"
+          hx-swap="outerHTML"
+          hx-push-url="true">In Progress</button>
+  </div>
+
+    <!-- Content -->
+    {% include "partials/community_cards.html" %}
+</div>

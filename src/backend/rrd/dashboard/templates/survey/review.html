@@ -1,0 +1,14 @@
+<form method="post" action="{% url 'submit_assessment' %}" class="space-y-4">
+    {% csrf_token %}
+    <input type="hidden" name="community_id" value="{{ community_id }}">
+    {% for qid, rating in responses.items %}
+        <input type="hidden" name="q_{{ qid }}" value="{{ rating }}">
+    {% endfor %}
+
+    <h2 class="text-xl font-bold mb-4">Review and Submit</h2>
+    <p class="text-gray-600 text-sm mb-4">Ready to submit your answers?</p>
+
+    <button type="submit" class="bg-black text-white px-4 py-2 rounded">
+        Submit Assessment
+    </button>
+</form>

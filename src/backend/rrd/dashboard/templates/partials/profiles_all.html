@@ -1,0 +1,111 @@
+<div id="profiles-section">
+    <!-- Tabs -->
+    <div class="inline-flex rounded-lg border bg-white shadow-sm p-0.5 mb-5">
+        <button 
+            class="px-6 py-2 text-sm font-medium {% if active_tab == 'all' %}text-white bg-black{% else %}text-gray-700 bg-gray-200 hover:bg-gray-300{% endif %} rounded-l-lg"
+            hx-get="{% url 'profiles_filter' 'all' %}"
+            hx-target="#profiles-section"
+            hx-swap="outerHTML"
+            hx-push-url="true">All Communities</button>
+        <button 
+            class="px-6 py-2 text-sm font-medium {% if active_tab == 'assessed' %}text-white bg-black{% else %}text-gray-700 bg-gray-200 hover:bg-gray-300{% endif %}"
+            hx-get="{% url 'profiles_filter' 'assessed' %}"
+            hx-target="#profiles-section"
+            hx-swap="outerHTML"
+            hx-push-url="true">Assessed</button>
+        <button 
+            class="px-6 py-2 text-sm font-medium {% if active_tab == 'in_progress' %}text-white bg-black{% else %}text-gray-700 bg-gray-200 hover:bg-gray-300{% endif %} rounded-r-lg"
+            hx-get="{% url 'profiles_filter' 'in_progress' %}"
+            hx-target="#profiles-section"
+            hx-swap="outerHTML"
+            hx-push-url="true">In Progress</button>
+    </div>
+
+    <!-- Grid of all communities -->
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-bold">Boise County</h2>
+            <p class="text-gray-600">Population: 7,831</p>
+            <p class="text-sm text-gray-500">Last Assessment: 11/14/2023</p>
+            <p class="text-sm text-gray-500">Overall Score: 3.8/5</p>
+            <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                <div class="h-2 bg-green-500 rounded-full" style="width: 76%;"></div>
+            </div>
+            <div class="flex justify-between mt-4">
+                <button class="px-4 py-2 border border-black text-black rounded-lg">View Profile</button>
+                <button class="px-4 py-2 bg-black text-white rounded-lg">Assess</button>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-bold">Valley County</h2>
+            <p class="text-gray-600">Population: 11,392</p>
+            <p class="text-sm text-gray-500">Last Assessment: 10/21/2023</p>
+            <p class="text-sm text-gray-500">Overall Score: 4.1/5</p>
+            <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                <div class="h-2 bg-green-500 rounded-full" style="width: 82%;"></div>
+            </div>
+            <div class="flex justify-between mt-4">
+                <button class="px-4 py-2 border border-black text-black rounded-lg">View Profile</button>
+                <button class="px-4 py-2 bg-black text-white rounded-lg">Assess</button>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-bold">Elmore County</h2>
+            <p class="text-gray-600">Population: 27,511</p>
+            <p class="text-sm text-gray-500">Last Assessment: 9/4/2023</p>
+            <p class="text-sm text-gray-500">Overall Score: 3.5/5</p>
+            <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                <div class="h-2 bg-yellow-500 rounded-full" style="width: 70%;"></div>
+            </div>
+            <div class="flex justify-between mt-4">
+                <button class="px-4 py-2 border border-black text-black rounded-lg">View Profile</button>
+                <button class="px-4 py-2 bg-black text-white rounded-lg">Assess</button>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-bold">Gem County</h2>
+            <p class="text-gray-600">Population: 19,123</p>
+            <p class="text-sm text-gray-500">Last Assessment: 8/16/2023</p>
+            <p class="text-sm text-gray-500">Overall Score: 3.2/5</p>
+            <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                <div class="h-2 bg-yellow-500 rounded-full" style="width: 64%;"></div>
+            </div>
+            <div class="flex justify-between mt-4">
+                <button class="px-4 py-2 border border-black text-black rounded-lg">View Profile</button>
+                <button class="px-4 py-2 bg-black text-white rounded-lg">Assess</button>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-bold">Adams County</h2>
+            <p class="text-gray-600">Population: 4,250</p>
+            <p class="text-sm text-gray-500">Last Assessment: 7/29/2023</p>
+            <p class="text-sm text-gray-500">Overall Score: 2.9/5</p>
+            <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                <div class="h-2 bg-red-500 rounded-full" style="width: 58%;"></div>
+            </div>
+            <div class="flex justify-between mt-4">
+                <button class="px-4 py-2 border border-black text-black rounded-lg">View Profile</button>
+                <button class="px-4 py-2 bg-black text-white rounded-lg">Assess</button>
+            </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-bold">Washington County</h2>
+            <p class="text-gray-600">Population: 10,187</p>
+            <p class="text-sm text-gray-500">Last Assessment: 6/11/2023</p>
+            <p class="text-sm text-gray-500">Overall Score: 3.7/5</p>
+            <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                <div class="h-2 bg-green-500 rounded-full" style="width: 74%;"></div>
+            </div>
+            <div class="flex justify-between mt-4">
+                <button class="px-4 py-2 border border-black text-black rounded-lg">View Profile</button>
+                <button class="px-4 py-2 bg-black text-white rounded-lg">Assess</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,78 @@
+<div id="assessment-question">
+    <!-- Everything below this line will now update per question -->
+
+    <!-- Progress and meta -->
+    <p class="text-sm text-gray-600 mb-2">Question {{ current_index|add:1 }} of {{ questions|length }}</p>
+
+    <div class="mb-4">
+        <div class="text-sm text-black mb-1">
+            <span class="font-semibold">Topic:</span> {{ question.topic.name }}
+        </div>
+        <div class="text-sm text-black">
+            <span class="font-semibold">Characteristics:</span>
+            <div class="mt-1 flex flex-wrap gap-2">
+                {% for char in question.characteristics.all %}
+                    <span class="bg-gray-200 text-gray-700 px-3 py-1.5 rounded-md text-xs whitespace-nowrap">
+                        {{ char.name }}
+                    </span>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <p class="font-semibold">{{ question.text }}</p>
+
+    {% if question.example %}
+        <div class="mt-2 text-sm text-gray-500 bg-gray-100 border border-gray-300 rounded p-3">
+            <p class="font-semibold text-gray-700">Example Scenario:</p>
+            <p>{{ question.example }}</p>
+        </div>
+    {% endif %}
+
+    <!-- DEBUG INFO (optional) -->
+    <div class="text-xs text-gray-400 mb-2">
+        Rendering <strong>question ID:</strong> {{ question.id }},
+        <strong>Index:</strong> {{ current_index }},
+        <strong>Text:</strong> {{ question.text|truncatechars:60 }}
+    </div>
+
+    <!-- Form -->
+    <form
+        hx-post="{% url 'next_question' %}"
+        hx-target="#assessment-question"
+        hx-swap="outerHTML"
+        class="space-y-6"
+    >
+        <input type="hidden" name="community_id" value="{{ community.id }}">
+        <input type="hidden" name="current_index" value="{{ current_index }}">
+        <input type="hidden" name="question_id" value="{{ question.id }}">
+
+        {% for qid, rating in responses.items %}
+            <input type="hidden" name="q_{{ qid }}" value="{{ rating }}">
+        {% endfor %}
+
+        <!-- Rating -->
+        <div class="space-y-2">
+            {% for val, label in rating_labels %}
+                <label class="flex items-center gap-2">
+                    <input type="radio" name="rating" value="{{ val }}" required>
+                    <span>{{ val }} - {{ label }}</span>
+                </label>
+            {% endfor %}
+        </div>
+
+        <!-- Feedback -->
+        <div>
+            <label for="feedback" class="block font-semibold mb-2">Feedback</label>
+            <textarea name="feedback" rows="3" class="w-full border-gray-300 rounded p-2"
+                      placeholder="Optional: Leave a comment..."></textarea>
+        </div>
+
+        <!-- Navigation -->
+        <div class="text-right">
+            <button type="submit" class="bg-black text-white px-4 py-2 rounded">
+                {% if current_index == questions|length|add:-1 %}Submit{% else %}Next →{% endif %}
+            </button>
+        </div>
+    </form>
+</div>

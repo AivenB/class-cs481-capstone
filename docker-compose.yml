@@ -1,0 +1,60 @@
+# ./docker-compose.yml
+version: '3.8'
+
+services:
+  web:
+    container_name: django-container
+    image: my-django:latest
+    build: .
+    volumes:
+      - .:/app:Z
+    ports:
+      - "${HOST_PORT:-8101}:8100"
+    environment:
+      - APP_ROOT=${APP_ROOT}
+      - HOST_PORT=${HOST_PORT}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - DB_HOST=${DB_HOST} # DB_HOST is the hostname of the database service name (e.g., db)
+      - DB_PORT=5432
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  # database service defined here
+  db:
+    container_name: postgres-container
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "55432:5432" # host-port:container-port (can chosose any host port)
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+
+
+# Summary Web Service:
+# The docker-compose.yml file defines a service called web. 
+# The image: line tells Compose to use the my-django image. If the image doesn’t exist, Compose builds it using the Dockerfile in the current directory.
+# The build: . line tells Compose to build the image using the Dockerfile in the current directory. 
+# The ports: uses the HOST_PORT environment variable, which is set in the .env file. If HOST_PORT isn’t set, Compose uses the default port 8101.
+# The restart: unless-stopped line tells Compose to restart the container unless it’s explicitly stopped.
+# The volumes: line mounts the project directory on the host to /app inside the container, allowing you to modify the code on the fly. 
+# Finally, the depends_on: line tells Compose that this service depends on the db service, which is defined below.
+
+# Summary Database (db) Service:'
+# container_name: defines the name of the container as "postgres-container".
+# image: specifies the Docker image to use for the PostgreSQL database.
+# environment: sets the environment variables for the PostgreSQL database, including the username, password, and database name.
+# ports: maps the host port 55432 to the container port 5432, allowing access to the PostgreSQL database from the host machine.
+# volumes: mounts a named volume called pgdata to the container's /var/lib/postgresql/data directory, which is where PostgreSQL stores its data.
+# The restart: unless-stopped line tells Compose to restart the container unless it’s explicitly stopped.
+# The volumes: section at the end defines a named volume called pgdata, which is used by the db service to persist data.
+# NOTE: database is persistent, even if containers are stopped. (Must be removed manually or using docker-compose down -v)

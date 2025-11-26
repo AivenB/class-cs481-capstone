@@ -1,0 +1,82 @@
+{% extends "basis.html" %}
+
+{% block title %}Overview | Rural Resilience Dashboard{% endblock %}
+
+{% block content %}
+
+    <!-- Main Dashboard -->
+    <h1 class="text-3xl font-semibold mb-3">Dashboard Overview</h1>
+    <p class="text-gray-600">Welcome to the Resilient Communities Dashboard. This platform helps assess and visualize community resilience.</p>
+
+    <!-- Stats Section with auto-refresh -->
+    <div class="grid grid-cols-3 gap-6 mt-6"
+         hx-get="{% url 'dashboard_stats' %}"  
+         hx-trigger="every 30s"  
+         hx-swap="innerHTML">  
+        <div class="bg-white shadow-md p-5 rounded-lg">
+            <h2 class="text-lg font-semibold flex items-center">
+                <i class="fas fa-city text-gray-500"></i> Total Communities
+            </h2>
+            <p class="text-4xl font-bold">12</p>
+            <p class="text-gray-500 text-sm">Communities currently assessed</p>
+        </div>
+        <div class="bg-white shadow-md p-5 rounded-lg">
+            <h2 class="text-lg font-semibold flex items-center">
+                <i class="fas fa-check-circle text-gray-500"></i> Assessments Completed
+            </h2>
+            <p class="text-4xl font-bold">8</p>
+            <p class="text-gray-500 text-sm">Completed community assessments</p>
+        </div>
+        <div class="bg-white shadow-md p-5 rounded-lg">
+            <h2 class="text-lg font-semibold flex items-center">
+                <i class="fas fa-chart-line text-gray-500"></i> Resilience Score Metrics
+            </h2>
+            <p class="text-4xl font-bold">1 - 5</p>
+            <p class="text-gray-500 text-sm">All communities are scored on a scale (1 - 5)</p>
+        </div>
+    </div>
+
+    <!-- Quick Actions & Recent Activity -->
+    <div class="grid grid-cols-2 gap-6 mt-6">
+        <!-- Quick Actions -->
+        <div class="bg-white shadow-md p-5 rounded-lg">
+            <h2 class="text-lg font-semibold">Quick Actions</h2>
+            <p class="text-gray-600 text-sm">Common tasks you might want to perform</p>
+            <div class="mt-4 space-y-3">
+                <button class="w-full py-2 px-4 bg-black text-white rounded-lg hover:bg-black flex items-center justify-center">
+                    <i class="fas fa-plus-circle mr-2"></i> Learn More
+                </button>
+                <button class="w-full py-2 px-4 bg-black text-white rounded-lg hover:bg-black flex items-center justify-center">
+                    <i class="fas fa-play-circle mr-2"></i> Start Assessment
+                </button>
+                <button class="w-full py-2 px-4 bg-black text-white rounded-lg hover:bg-black flex items-center justify-center">
+                    <i class="fas fa-chart-pie mr-2"></i> View Analytics
+                </button>
+            </div>
+        </div>  
+        <!-- Recent Activity with auto-refresh -->
+        <div class="bg-white shadow-md p-5 rounded-lg"
+             hx-get="{% url 'dashboard_activity' %}"  
+             hx-trigger="every 60s"  
+             hx-target="find ul"  
+             hx-swap="innerHTML">  
+            <h2 class="text-lg font-semibold">Recent Activity</h2>
+            <p class="text-gray-600 text-sm">Latest updates across communities</p>
+            <ul class="mt-4 space-y-2 text-black">
+                <li class="border-b pb-2">
+                    <i class="fas fa-map-marker-alt"></i> Boise County Assessment Updated 
+                    <p class="text-sm text-gray-500">2 hours ago</p>
+                </li>
+                <li class="border-b pb-2">
+                    <i class="fas fa-map-marker-alt"></i> New Community Added: Valley County 
+                    <p class="text-sm text-gray-500">Yesterday</p>
+                </li>
+                <li>
+                    <i class="fas fa-map-marker-alt"></i> Resilience Report Generated for Elmore County 
+                    <p class="text-sm text-gray-500">3 days ago</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+            
+{% endblock %}

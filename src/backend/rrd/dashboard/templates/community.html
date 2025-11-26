@@ -1,0 +1,16 @@
+{% extends "basis.html" %} 
+
+{% block title %}Community Profiles | Rural Resilience Dashboard{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="mb-6">
+        <h1 class="text-3xl font-bold">Community Profiles</h1>
+        <p class="text-gray-600 mt-2">View and compare community resilience assessments.</p>
+    </div>
+
+    <!-- Profiles Section -->
+    <div id="profiles-section">
+        {% include "partials/profiles_all.html" with active_tab='all' %}
+    </div>
+{% endblock %}

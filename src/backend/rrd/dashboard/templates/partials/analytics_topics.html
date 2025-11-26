@@ -1,0 +1,39 @@
+<div id="analytics-section">
+    <!-- Tabs -->
+    <div class="inline-flex rounded-lg border bg-white shadow-sm p-0.5 mb-5">
+        <button 
+            class="px-6 py-2 text-sm font-medium {% if active_tab == 'characteristics' %}text-white bg-black{% else %}text-gray-700 bg-gray-200 hover:bg-gray-300{% endif %} rounded-l-lg"
+            hx-get="/dashboard/analytics/filter/characteristics"
+            hx-target="#analytics-section"
+            hx-swap="outerHTML">Characteristics</button>
+        <button 
+            class="px-6 py-2 text-sm font-medium {% if active_tab == 'topics' %}text-white bg-black{% else %}text-gray-700 bg-gray-200 hover:bg-gray-300{% endif %}"
+            hx-get="/dashboard/analytics/filter/topics"
+            hx-target="#analytics-section"
+            hx-swap="outerHTML">Topics</button>
+        <button 
+            class="px-6 py-2 text-sm font-medium {% if active_tab == 'comparison' %}text-white bg-black{% else %}text-gray-700 bg-gray-200 hover:bg-gray-300{% endif %} rounded-r-lg"
+            hx-get="/dashboard/analytics/filter/comparison"
+            hx-target="#analytics-section"
+            hx-swap="outerHTML">Community Comparison</button>
+    </div>
+
+    <!-- Content specific to topics -->
+    <div class="grid gap-6 md:grid-cols-2">
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-bold">Topics of Resilient Communities</h2>
+            <p class="text-gray-600 text-sm mb-4">Overall scores for each topic</p>
+            <div class="space-y-4">
+                <!-- Content will be added later -->
+            </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg p-6">
+            <h2 class="text-xl font-bold">Topics Distribution</h2>
+            <p class="text-gray-600 text-sm mb-4">Score distribution across topics</p>
+            <div class="space-y-4">
+                <!-- Content will be added later -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+{% load static tailwind_tags %} 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- HTMX for dynamic interactions -->
+    <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+    <!-- Material Icons for UI elements -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- Tailwind CSS for styling -->
+    {% tailwind_css %}
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white shadow-md p-5 flex flex-col justify-between h-screen">
+            <!-- Sidebar Header -->
+            <div>
+                <a href="{% url 'start' %}" class="text-xl font-bold mb-4">Resilience Community</a>
+                <div class="mb-3"></div>
+                <nav class="space-y-3">
+                    <a href="{% url 'dashboard' %}" class="flex items-center gap-x-2 px-3 py-2 {% if active_page == 'dashboard' %}bg-gray-200 rounded-md{% endif %}">
+                        <span class="material-icons text-lg">home</span>
+                        <span class="text-gray-800">Overview</span>
+                    </a>
+                    <a href="{% url 'community' %}" class="flex items-center gap-x-2 px-3 py-2 {% if active_page == 'community' %}bg-gray-200 rounded-md{% endif %}">
+                        <span class="material-icons text-lg">groups</span>
+                        <span class="text-gray-800">Community Profiles</span>
+                    </a>
+                    <a href="{% url 'about' %}" class="flex items-center gap-x-2 px-3 py-2 {% if active_page == 'about' %}bg-gray-200 rounded-md{% endif %}">
+                        <span class="material-icons text-lg">info</span>
+                        <span class="text-gray-800">About Us</span>
+                    </a>
+                    <a href="{% url 'analytics' %}" class="flex items-center gap-x-2 px-3 py-2 {% if active_page == 'analytics' %}bg-gray-200 rounded-md{% endif %}">
+                        <span class="material-icons text-lg">bar_chart</span>
+                        <span class="text-gray-800">Analytics</span>
+                    </a>
+                    <a href="{% url 'assessment' %}" class="flex items-center gap-x-2 px-3 py-2 {% if active_page == 'assessment' %}bg-gray-200 rounded-md{% endif %}">
+                        <span class="material-icons text-lg">assignment</span>
+                        <span class="text-gray-800">Assessment</span>
+                    </a>
+                </nav>
+            </div>
+        
+            <!-- Sidebar Footer -->
+            <div class="mt-auto border-t pt-4 text-sm text-gray-500">
+                <p>&copy; {% now "Y" %} Rural Resilience Dashboard</p>                 
+            </div>
+        </aside> 
+
+        <!-- Main Content -->
+        <main class="flex-1 p-6">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+
+</body>
+</html>

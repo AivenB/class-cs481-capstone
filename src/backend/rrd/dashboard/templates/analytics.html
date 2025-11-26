@@ -1,0 +1,14 @@
+{% extends "basis.html" %} 
+
+{% block title %}Analytics | Rural Resilience Dashboard{% endblock %}
+
+{% block content %}
+    <!-- Header -->
+    <div class="mb-6">
+        <h1 class="text-3xl font-bold">Community Analytics</h1>
+        <p class="text-gray-600 mt-2">Analyze and visualize community resilience data.</p>
+    </div>
+
+    <!-- Analytics Content -->
+    {% include "partials/analytics_characteristics.html" %}
+{% endblock %}

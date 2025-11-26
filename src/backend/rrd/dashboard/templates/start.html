@@ -1,0 +1,210 @@
+<!-- Landing Page -->
+
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural Resilience Community</title>
+    
+    <script src="https://unpkg.com/htmx.org@1.9.4"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    {% tailwind_css %}
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="border-b">
+        <div class="w-full px-8">
+            <div class="flex justify-between items-center h-16">
+                <div>
+                    <span class="text-lg font-bold">Rural Resilience Community</span>
+                </div>
+                <nav class="flex gap-6">
+                    <a href="#about" class="text-sm font-medium hover:underline">About</a>
+                    <a href="#importance" class="text-sm font-medium hover:underline">Why Resilience</a>
+                    <a href="#approach" class="text-sm font-medium hover:underline">Our Approach</a>
+                    <a href="#benefits" class="text-sm font-medium hover:underline">Benefits</a>
+                </nav>
+                <div>
+                    <a href="{% url 'dashboard' %}" class="bg-black text-white px-4 py-2 rounded-lg hover:bg-blue-700 flex items-center">
+                        Access Dashboard 
+                        <span class="material-icons text-base ml-2">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-1">
+        <!-- Hero Section -->
+        <section class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+            <div class="container mx-auto max-w-7xl px-4 md:px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <h1 class="text-4xl font-extrabold sm:text-5xl md:text-6xl leading-tight">
+                            Building Resilient Rural Communities
+                        </h1>
+                        <p class="text-gray-700 md:text-xl mt-4">
+                            Comprehensive resilience assessments to help rural communities understand risks, implement mitigation strategies, and plan for a sustainable future.
+                        </p>
+                        <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                            <a href="{% url 'dashboard' %}" class="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800">Explore Dashboard</a>
+                            <a href="#about" class="border border-black text-black px-6 py-3 rounded-lg hover:bg-gray-200">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div class="w-full h-[300px] md:h-[400px] bg-gray-300 rounded-lg overflow-hidden">
+                            <img src="{% static 'images/ruralCommunity.jpg' %}" alt="Community Image" class="w-full h-full object-cover">
+                        </div>
+                        <div class="absolute -bottom-6 right-6 bg-white p-3 rounded-lg shadow-lg">
+                            <p class="text-sm font-bold">Serving rural communities across Idaho</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="w-full py-12 md:py-24 lg:py-32">
+            <div class="container mx-auto max-w-7xl px-4 md:px-6">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold sm:text-4xl mb-6">About Our Initiative</h2>
+                    <p class="text-gray-700 md:text-xl">
+                        The Hazard and Climate Resilience Institute designs and conducts cross-sector community resilience assessments for rural communities.
+                    </p>
+                    <div class="mt-12 grid md:grid-cols-2 gap-8">
+                        <div class="p-6 bg-white rounded-lg shadow-sm">
+                            <h3 class="text-xl font-bold mb-4">Our Mission</h3>
+                            <p class="text-gray-700">Helping rural communities understand risks, implement mitigation strategies, and recover/plan for the future.</p>
+                        </div>
+                        <div class="p-6 bg-white rounded-lg shadow-sm">
+                            <h3 class="text-xl font-bold mb-4">Our Vision</h3>
+                            <p class="text-gray-700">Creating a network of resilient rural communities prepared for changing environmental and economic challenges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Resilience Matters -->
+        <section id="importance" class="w-full py-12 md:py-24 lg:py-32 bg-gray-100">
+            <div class="container mx-auto max-w-7xl px-4 md:px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold sm:text-4xl mb-4">Why Resilience Matters</h2>
+                    <p class="text-gray-700 md:text-xl">
+                        Rural communities face unique challenges that require specialized resilience strategies.
+                    </p>
+                </div>
+                <div class="mb-3"></div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-bold mb-3">Geographic Isolation</h3>
+                        <p class="text-gray-700">
+                            Rural areas face longer emergency response times and limited resources.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-bold mb-3">Limited Resources</h3>
+                        <p class="text-gray-700">
+                            Smaller budgets require strategic resilience planning.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-bold mb-3">Aging Infrastructure</h3>
+                        <p class="text-gray-700">
+                            Many rural areas need upgrades to withstand extreme events.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-bold mb-3">Economic Vulnerability</h3>
+                        <p class="text-gray-700">
+                            Rural economies are often dependent on a single industry.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-bold mb-3">Demographic Changes</h3>
+                        <p class="text-gray-700">
+                            Many rural communities face population decline and aging residents,
+                            creating unique challenges for resilience planning.
+                        </p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-bold mb-3">Climate Impacts</h3>
+                        <p class="text-gray-700">
+                            Rural communities often depend on natural resources and agriculture,
+                            making them particularly vulnerable to climate change impacts.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="w-full py-16 md:py-24 lg:py-32">
+            <div class="container mx-auto max-w-7xl px-4 md:px-6">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-extrabold sm:text-4xl md:text-5xl mb-6">
+                        Ready to Build Resilience?
+                    </h2>
+                    
+                    <p class="text-gray-700 md:text-xl mb-8">
+                        Access our dashboard to explore community profiles, assessment tools, and resilience analytics.
+                    </p>
+                    <div class="mb-3"></div>
+                    <div class="flex justify-center">
+                        <a href="{% url 'dashboard' %}" class="bg-black text-white px-8 py-4 rounded-lg hover:bg-gray-800 inline-flex items-center">
+                            Access Dashboard
+                        </a>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-6">
+                        For more information, contact Dr. Brittany Brand at 
+                        <a href="mailto:brittanybrand@boisestate.edu" class="underline">brittanybrand@boisestate.edu</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t bg-gray-100 py-8">
+        <div class="container mx-auto max-w-7xl px-4 md:px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <span class="text-lg font-bold">Rural Resilience Community</span>
+                    <p class="text-sm text-gray-600 mt-2">
+                        Helping rural communities build resilience through comprehensive assessments and strategic planning.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4">Resources</h4>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:underline">Assessment Framework</a></li>
+                        <li><a href="#" class="text-gray-600 hover:underline">Case Studies</a></li>
+                        <li><a href="#" class="text-gray-600 hover:underline">Publications</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4">Contact</h4>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="mailto:brittanybrand@boisestate.edu" class="text-gray-600 hover:underline">Email Us</a></li>
+                        <li><a href="#" class="text-gray-600 hover:underline">Boise State University</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-sm font-bold mb-4">Legal</h4>
+                    <ul class="text-sm space-y-2">
+                        <li><a href="#" class="text-gray-600 hover:underline">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-600 hover:underline">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t mt-8 pt-6 text-center text-sm text-gray-600">
+                &copy; {% now "Y" %} Rural Resilience Dashboard. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

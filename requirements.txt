@@ -1,0 +1,10 @@
+django
+djangorestframework
+django-cors-headers
+django-tailwind
+django-tailwind[reload]
+psycopg2-binary
+django-environ
+whitenoise
+gunicorn
+python-dotenv

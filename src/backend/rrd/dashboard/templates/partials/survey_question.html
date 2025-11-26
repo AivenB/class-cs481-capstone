@@ -1,0 +1,79 @@
+{% if survey and questions %}
+<form hx-post="{% url 'submit_question_response' %}" hx-target="#question-container">
+    <input type="hidden" name="community_id" value="{{ community_id }}">
+    <input type="hidden" name="survey_id" value="{{ survey.id }}">
+    <input type="hidden" name="question_index" value="{{ current_index }}">
+    <input type="hidden" name="total_questions" value="{{ questions|length }}">
+    
+    <!-- Progress bar -->
+    <div class="mb-6">
+        <div class="flex justify-between">
+            <span class="text-sm text-gray-600">Progress</span>
+            <span class="text-sm text-gray-600">Question {{ current_index|add:"1" }} of {{ questions|length }}</span>
+        </div>
+        <div class="w-full bg-gray-200 rounded-full h-2.5 mt-1">
+            <!-- <div class="bg-blue-600 h-2.5 rounded-full" style="width: {{ progress_percent }}%"></div> -->
+        </div>
+    </div>
+    
+    <!-- Current question -->
+    <div id="question-container" class="mb-6 p-4 border rounded-lg">
+        <!-- Question metadata -->
+        <div class="flex justify-between mb-4">
+            <div><span class="font-semibold">Topic:</span> {{ current_question.topic.name }}</div>
+            {% if current_question.characteristics.exists %}
+            <div>
+                <span class="font-semibold">Characteristic:</span>
+                {% with char=current_question.characteristics.first %}
+                    {{ char.name }}
+                {% endwith %}
+            </div>
+            {% endif %}
+        </div>
+        
+        <!-- Question text -->
+        <h3 class="text-lg font-medium mb-4">{{ current_question.text }}</h3>
+        
+        <!-- Rating options -->
+        <div class="space-y-2 mb-4">
+            {% for i in "12345" %}
+            <div class="flex items-center">
+                <input type="radio" id="rating-{{ i }}" name="rating" value="{{ i }}" class="mr-2" {% if saved_rating == i %}checked{% endif %}>
+                <label for="rating-{{ i }}">
+                    {% if i == '1' %}1 - Very Low{% elif i == '2' %}2 - Low{% elif i == '3' %}3 - Moderate{% elif i == '4' %}4 - High{% else %}5 - Very High{% endif %}
+                </label>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Notes field -->
+        <div>
+            <label for="feedback" class="block text-sm font-medium mb-2">Notes</label>
+            <textarea id="feedback" name="feedback" rows="4" 
+                      class="w-full p-2 border rounded-lg" 
+                      placeholder="Optional: provide feedback or reasoning for response...">{{ saved_feedback }}</textarea>
+        </div>
+        
+        <!-- Navigation buttons -->
+        <div class="flex justify-between mt-6">
+            <button type="button" class="px-4 py-2 border rounded-lg text-gray-700"
+                    {% if current_index = 0 %}disabled{% endif %}
+                    hx-get="{% url 'load_survey_questions' %}"
+                    hx-include="[name='community_id'], [name='survey_id']"
+                    hx-target="#survey-questions"
+                    hx-vals='{"direction": "prev", "current_index": "{{ current_index }}"}'>
+                Previous
+            </button>
+            
+            <button type="submit" class="px-4 py-2 border rounded-lg bg-blue-600 text-white"
+                    hx-include="[name='community_id'], [name='survey_id'], [name='question_index'], [name='total_questions']">
+                {% if current_index == questions|length|add:"-1" %}Submit{% else %}Next{% endif %}
+            </button>
+        </div>
+    </div>
+</form>
+{% elif survey %}
+<div class="p-4">
+    <p class="text-center">No questions available for this survey.</p>
+</div>
+{% endif %}

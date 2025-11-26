@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rural Resilience Community Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: linear-gradient(to right, #77b3d7, #ad53fb); /* Gradient from left to right */
+            color: #ffffff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 25px 15%; /* 25% margin on left and right */
+            background: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #35424a;
+        }
+        p {
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            unicode-bidi: isolate;
+        }
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            margin: 10px 0;
+        }
+        .hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+            user-select: none; /* Prevent text selection */
+        }
+        .visible {
+            position: relative; /* Change to relative to keep it in the flow */
+            padding: 10px; /* Add some padding for visibility */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
+            border: 1px solid #ccc; /* Optional border for visibility */
+            border-radius: 5px; /* Rounded corners */
+            margin: 10px 0; /* Margin for spacing */
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>s25-horde</h1>
+    <h2>Rural Resilience Dashboard: Connecting Communities</h2>
+</header>
+
+<section >
+    <h2>Project Abstract</h2>
+    <p>
+        The Hazard and Climate Resilience Institute designs and conducts cross-sector community resilience assessments for rural communities. 
+        Comprehensive resilience assessments play a vital role in helping communities understand risks and hazards, implement mitigation strategies, 
+        and recover/plan for the future. 
+    </p>
+    <p>
+        Rural communities face unique challenges due to geographic isolation, limited resources, and other barriers. Initially, we adapted the City 
+        Resilience Index to meet these unique rural conditions, but the project has since evolved into a new framework. As we move away from the 
+        City Resilience Index, we require a better interface to populate specific qualitative question sets and create data visualizations based on 
+        question results.
+    </p>
+    <p>
+        By collaborating with Boise State students on this website/dashboard/portal, we aim to streamline data collection and representation processes. 
+        This will enhance the positive impact of our resilience assessments, helping us connect with more rural communities and quickly communicate 
+        our findings. The envisioned dashboard will include:
+        <ul>
+            <li>Unique profiles for each community being assessed</li>
+            <li>A complete question bank to easily populate specific questions based on community relevance</li>
+            <li>Data input capabilities (questions answered on a 1-5 scale)</li>
+            <li>Data visualizations for question results, combining multiple question scores to provide overall scores for each "Topic" and "Characteristic of Resilient Communities."</li>
+        </ul>
+    </p>
+</section>
+
+<section>
+    <h2>Team Members</h2>
+    <p>Aiven Boungnavong, Jackson Kaiser, William Lawrence</p>
+</section>
+
+<section>
+    <h2>What We Actually Built</h2>
+    <p>
+        Our team developed the foundational infrastructure for a community resilience assessment portal tailored for rural communities. We focused first on setting up the core backend architecture to support user authentication, secure data handling, and future data visualization capabilities.
+    </p>
+    <p>
+        We built a Django-based backend integrated with a PostgreSQL database to manage community profiles, a customizable question bank, and user-submitted assessment data. A containerized deployment process using Docker Compose ensures that the entire application can be launched easily across different environments.
+    </p>
+    <p>
+        On the frontend, we implemented a basic homepage with navigation between pages, dynamic loading of user-specific content, and an early prototype for the community dashboard. Although the frontend is still evolving, it currently allows authenticated users to access initial profile pages. A login system is partially in place, relying on Django's authentication mechanisms, and is designed to restrict access to community-specific data.
+    </p>
+    <p>
+        For data visualization, we developed initial components that generate charts and graphs based on example data. While these are not yet connected to live database queries, the visualization framework is ready for full integration.
+    </p>
+    <p>
+        Overall, we have completed the infrastructure necessary to support login, data input, and dynamic content delivery. The project is positioned for frontend refinement, full database integration, expanded visualization features, and enhanced security in the next development phase.
+    </p>
+</section>
+
+<section>
+    <h2>Screenshots</h2>
+    <img src="static/images/start.png" alt="Hope Page" class="screenshot">
+    <img src="static/images/overview.png" alt="Dashboard Screenshot" class="screenshot">
+    <img src="static/images/communityProfiles.png" alt="Community Assessment Screenshot" class="screenshot">
+</section>
+
+</body>
+</html>

@@ -1,4 +1,4 @@
-# CS481 Capstone Project
+# CS481 Capstone Project (Spring 2025)
 
 ## Rural Resilience Dashboard
 

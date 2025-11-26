@@ -31,7 +31,7 @@
 ![flowchart](images/flowchart.png)
 
 ### Project Status
-[![Continuous Integration (CI)](https://github.com/AivenB/class-cs481-capstone/actions/workflows/ci.yml/badge.svg)]
+[![Continuous Integration (CI)](https://github.com/AivenB/class-cs481-capstone/actions/workflows/ci.yml/badge.svg)](https://github.com/AivenB/class-cs481-capstone/actions/workflows/ci.yml)
 
 ### Virtual Local Enviornement Setup
 - Prerequisite: install `virtualenv` and `python` version 3.8 or newer
